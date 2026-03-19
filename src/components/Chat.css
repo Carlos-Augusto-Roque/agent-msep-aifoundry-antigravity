@@ -226,7 +226,6 @@
 }
 
 .message-bubble {
-  max-width: 75%;
   padding: 1rem 1.25rem;
   border-radius: 20px;
   font-size: 1rem;
@@ -236,6 +235,7 @@
 }
 
 .user .message-bubble {
+  max-width: 75%;
   background: linear-gradient(135deg, #2563eb, #3b82f6);
   color: white;
   border-bottom-right-radius: 4px;
@@ -243,6 +243,7 @@
 }
 
 .agent .message-bubble {
+  max-width: 92%;
   background: #ffffff;
   border: 1px solid var(--border-color);
   color: var(--text-primary);
@@ -384,9 +385,16 @@
   }
 
   .message-bubble {
-    max-width: 90%;
     padding: 0.875rem 1rem;
     font-size: 0.95rem;
+  }
+  
+  .user .message-bubble {
+    max-width: 90%;
+  }
+
+  .agent .message-bubble {
+    max-width: 95%;
   }
 
   .chat-input-area {
