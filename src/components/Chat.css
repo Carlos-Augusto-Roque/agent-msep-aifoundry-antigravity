@@ -474,6 +474,30 @@
   }
 }
 
+/* Toast Notification */
+.toast-notification {
+  position: absolute;
+  top: 80px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid var(--glass-border);
+  animation: toastFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  white-space: nowrap;
+}
+
+@keyframes toastFade {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
 /* Markdown Styles inside Message Bubble */
 .message-bubble p {
   margin-top: 0;

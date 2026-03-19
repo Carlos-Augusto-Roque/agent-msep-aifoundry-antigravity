@@ -22,9 +22,15 @@ export default function Chat() {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [showConfirmClear, setShowConfirmClear] = useState(false);
+    const [toastMessage, setToastMessage] = useState<string | null>(null);
     const [attachedFile, setAttachedFile] = useState<{ name: string, content: string } | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const showToast = (msg: string) => {
+        setToastMessage(msg);
+        setTimeout(() => setToastMessage(null), 4000);
+    };
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -50,8 +56,18 @@ export default function Chat() {
         const file = e.target.files?.[0];
         if (!file) return;
 
+        const extension = file.name.split('.').pop()?.toLowerCase();
+        const allowedExtensions = ['txt', 'csv', 'md', 'html', 'docx', 'doc'];
+        
+        if (!allowedExtensions.includes(extension || '')) {
+            showToast('❌ Formato inválido! Envie apenas Word, TXT ou CSV.');
+            if (fileInputRef.current) fileInputRef.current.value = '';
+            return;
+        }
+
         if (file.size > 2 * 1024 * 1024) {
-            alert('O arquivo é muito grande (Máximo de 2MB permitidos para Word e Textos).');
+            showToast('⚠️ Arquivo muito grande! O limite máximo é de 2MB.');
+            if (fileInputRef.current) fileInputRef.current.value = '';
             return;
         }
 
@@ -60,7 +76,7 @@ export default function Chat() {
             const text = await extractTextFromFile(file);
             setAttachedFile({ name: file.name, content: text });
         } catch (err: any) {
-            alert(err.message || 'Erro ao processar o arquivo.');
+            showToast('❌ ' + (err.message || 'Erro ao processar o arquivo.'));
         } finally {
             setIsLoading(false);
             if (fileInputRef.current) {
@@ -118,7 +134,14 @@ export default function Chat() {
     return (
         <div style={{ width: '100%', maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-            <div className="chat-container glass-panel" style={{ margin: '0' }}>
+            <div className="chat-container glass-panel" style={{ margin: '0', position: 'relative' }}>
+                
+                {toastMessage && (
+                    <div className="toast-notification glass-panel">
+                        {toastMessage}
+                    </div>
+                )}
+                
                 <div className="chat-header">
                     <div className="agent-avatar">
                         <div className="avatar-glow"></div>
