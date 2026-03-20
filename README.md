@@ -10,13 +10,13 @@ Este repositório contém o código-fonte completo da **Plataforma Web Especiali
 - **Extrator Oculto de Anexos (Local)**: Leitura ponta a ponta no lado do cliente (Navegador) de arquivos `.docx` (Word), `.txt`, `.csv` e `.md` (embutidos através do pacote inteligente `Mammoth`), permitindo a análise instantânea de planos de aula.
 - **UI Premium Design (Glassmorphism)**: Efeito de vidro opaco nativo e ultra sofisticado, responsivo para Dispositivos Móveis e Tablets sem "esmagar" botões graças aos bloqueios Flex-Shrink.
 - **Background Integrado**: Experiência visual dinâmica exclusiva para computadores com um Papel de Parede Abstract Mesh 4K na identidade visual do aplicativo.
-- **Renderização Impecável (Markdown)**: Motor `react-markdown` importado diretamente do padrão mental do mercado de IA para exibição de Tabelas rigorosas, Trechos de Código Hacker `(pre)` e listas metodológicas.
+- **Renderização (Markdown)**: Motor `react-markdown` importado diretamente do padrão mental do mercado de IA para exibição de Tabelas rigorosas, Trechos de Código Hacker `(pre)` e listas metodológicas.
 
 ---
 
 ## 🏗️ Arquitetura e Segurança de Nível Bancário
 
-A maior vantagem desta plataforma em relação a web-apps amadores é o uso de **Serverless Functions** atuando como "Firewall". 
+A maior vantagem desta plataforma em relação a outros web-apps é o uso de **Serverless Functions** atuando como "Firewall". 
 Se o aplicativo fizesse requisições no Frontend, a chave do Azure (AZURE_API_KEY) vazaria na aba "Inspeção de Código F12" dos alunos. 
 Nesse design:
 1. Seu código React (Front) pede socorro pra própria **Vercel**.
@@ -57,4 +57,4 @@ npm run dev
 
 ---
 
-**Desenvolvido magistralmente por Carlos Roque (Equipe SENAI / MSEP) com o poder somado da Inteligência Antigravity e Foundry Agents.**
+**Desenvolvido por Carlos Roque com o poder somado do Antigravity e Foundry Agents.**
