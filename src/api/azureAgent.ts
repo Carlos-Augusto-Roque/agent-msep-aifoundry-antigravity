@@ -1,12 +1,3 @@
-/**
- * INTEGRAÇÃO DO AGENTE AI FOUNDRY
- * 
- * Aplicativo do agente: EspecialistaMSEP
- * Versão do agente: 6
- * ID da entidade de segurança da identidade do agente: 75df8092-ef42-4a16-be7e-8ef6d07053de
- * ID do locatário: b1051c4b-3b94-41ab-9441-e73a72342fdd
- */
-
 export async function sendMessageToAgent(message: string): Promise<string> {
   try {
     // Requisição encaminhada para o NOSSO Backend Invisível (/api/chat) que esconde a chave da Azure.
